@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
+import useTitle from '../../Hook/useTitle';
 const Colleges = () => {
+    useTitle("All colleges")
     const [colleges, setColleges] = useState([])
     const searchRef = useRef(null)
     const [search, setSearch] = useState('')
     useEffect(() => {
-        fetch(`http://localhost:5000/colleges?search=${search}`)
+        fetch(`https://end-game-server-site.vercel.app/colleges?search=${search}`)
         .then(res => res.json())
         .then(data => setColleges(data))
     },[search])
@@ -16,13 +18,13 @@ const Colleges = () => {
     return (
         <div className='container mt-4'>
             <div>
-                <div className="input-group mb-3 w-50 mb-3 mx-auto">
+                <div className="input-group mb-3 w-50 mx-auto">
                     <span className="input-group-text py-3" id="basic-addon1"><BiSearch style={{fontSize:"23px"}}/></span>
                     <input onKeyUp={handleSearch} type="text" ref={searchRef} className="form-control py-3" placeholder="Search College" aria-describedby="basic-addon1"/>
                 </div>
             </div>
-            <h3 className='text-center fw-bold mb-4'>Colleges</h3>
-            <div className="row row-cols-1 row-cols-md-3 g-4 mb-3">
+            <h3 className='text-center fw-bold mb-4'>All Colleges</h3>
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-3">
                 {
                     colleges.map(college => 
                         <div key={college._id} className="col">

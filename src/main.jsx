@@ -18,6 +18,7 @@ import AdmissionForm from './Pages/Addmission/AdmissionForm';
 import MyCollege from './Pages/MyCollege/MyCollege';
 import AddReview from './Pages/MyCollege/AddReview';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
+import UserProfile from './Pages/UserProfile/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -44,17 +45,17 @@ const router = createBrowserRouter([
       {
         path: "/college/:id",
         element: <PrivateRoute><CollegeDetails/></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/colleges/${params.id}`)
+        loader: ({params}) => fetch(`https://end-game-server-site.vercel.app/colleges/${params.id}`)
       },
       {
         path: "/admission",
         element: <Admission/>,
-        loader: () => fetch('http://localhost:5000/admission')
+        loader: () => fetch('https://end-game-server-site.vercel.app/admission')
       },
       {
         path: "/admission/:id",
         element: <PrivateRoute><AdmissionForm/></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/admission/${params.id}`)
+        loader: ({params}) => fetch(`https://end-game-server-site.vercel.app/admission/${params.id}`)
       },
       {
         path: "/myCollege",
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/addReview",
         element: <PrivateRoute><AddReview/></PrivateRoute>
+      },
+      {
+        path: "/userProfile",
+        element: <PrivateRoute><UserProfile/></PrivateRoute>
       },
     ]
   },

@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className='container'>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Collage</a>
+                    <Link className="navbar-brand" to={'/'}>Collage Admission</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
@@ -35,23 +35,23 @@ const Navbar = () => {
                                 </li> : <></>
                             }
                         </ul>
-                    </div>
-                    <div>
-                        {
-                            user ? 
-                            <div className='d-flex gap-2 align-items-center'>
-                              <button onClick={handleLogout} className='btn btn-warning px-3'>Log Out</button> 
-                              <Link>
-                                <img 
-                                    data-tooltip-id="tooltip" data-tooltip-content={user.displayName}
-                                    style={{width:"40px", height:"40px", borderRadius:"50%", cursor:"pointer"}} 
-                                    src={user.photoURL} alt="" 
-                                /> 
-                              </Link>
-                              <Tooltip id="tooltip" place="right" effect="solid"  />
-                            </div>:
-                            <Link to='/login' className='btn btn-warning px-4'>Login</Link>
-                        }
+                        <div>
+                            {
+                                user ? 
+                                <div className='d-flex gap-2 align-items-center'>
+                                <button onClick={handleLogout} className='btn btn-warning px-3'>Log Out</button> 
+                                <Link to='/userProfile'>
+                                    <img 
+                                        data-tooltip-id="tooltip" data-tooltip-content={user.displayName}
+                                        style={{width:"40px", height:"40px", borderRadius:"50%", cursor:"pointer"}} 
+                                        src={user.photoURL} alt="" 
+                                    /> 
+                                </Link>
+                                <Tooltip id="tooltip" place="right" effect="solid"  />
+                                </div>:
+                                <Link to='/login' className='btn btn-warning px-4'>Login</Link>
+                            }
+                        </div>
                     </div>
                 </div>
             </nav>

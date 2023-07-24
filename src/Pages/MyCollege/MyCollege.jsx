@@ -1,35 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import useTitle from '../../Hook/useTitle';
 
 const MyCollege = () => {
+    useTitle("My college")
     const {user} = useContext(AuthContext)
     const [myColleges, setMyColleges] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/admissionDetails?email=${user?.email}`)
+        fetch(`https://end-game-server-site.vercel.app/admissionDetails?email=${user?.email}`)
         .then(res => res.json())
         .then(data => setMyColleges(data))
     }, [])
     return (
         <div className='container mt-3'>
-            {/* <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table> */}
             <h1 className='text-center fw-bold mb-3'>My College</h1>
             <h4 className='text-center mb-4'>Admission Information</h4>
             {

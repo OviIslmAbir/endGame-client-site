@@ -5,7 +5,9 @@ import { FaKey, FaEnvelope, FaGoogle, FaFacebook } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2'
+import useTitle from '../../Hook/useTitle';
 const Login = () => {
+    useTitle("Login")
     const {login, forgetPassword, googleLogin, facebookLogin} = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
@@ -44,27 +46,55 @@ const Login = () => {
     }
     const handleGoogle = () => {
         googleLogin()
-        .then(() => {
-            Swal.fire({
-                title: 'Success!',
-                text: 'User login successfully',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            })
-            navigate(from)
+        .then((result) => {
+            const loggedUser = result.user
+            console.log(loggedUser)
+            const userDetails = {name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL, address: "N/A", college: "N/A", dateOfBirth: "N/A", age:"N/A", phoneNo: "N/A"}
+            fetch('https://end-game-server-site.vercel.app/users', {
+                method: "POST",
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body : JSON.stringify(userDetails)
+               })
+                .then(res => res.json())
+                .then(data => {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'User login successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                         })
+
+                        navigate(from)
+                    })
         })
         .catch(error => console.log(error))
     }
     const handleFacebook = () => {
         facebookLogin()
-        .then(() => {
-            Swal.fire({
-                title: 'Success!',
-                text: 'User login successfully',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            })
-            navigate(from)
+        .then((result) => {
+            const loggedUser = result.user
+            console.log(loggedUser)
+            const userDetails = {name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL, address: "N/A", college: "N/A", dateOfBirth: "N/A", age:"N/A", phoneNo: "N/A"}
+            fetch('https://end-game-server-site.vercel.app/users', {
+                method: "POST",
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body : JSON.stringify(userDetails)
+               })
+                .then(res => res.json())
+                .then(data => {
+                        Swal.fire({
+                                title: 'Success!',
+                                text: 'User login successfully',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                        })
+                        
+                        navigate(from)
+                    })
         })
         .catch(error => console.log(error))
     }

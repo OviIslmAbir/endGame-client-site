@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 const Review = () => {
     const [review, setReview] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://end-game-server-site.vercel.app/review')
         .then(res => res.json())
         .then(data => setReview(data))
     },[])
@@ -31,7 +31,7 @@ const Review = () => {
                                 <div className="text-center">
                                     <h4 className='fw-bold'>{r.name}</h4>
                                     <p className="text-left"><small>{r.feedback}</small></p>
-                                    <div className='d-flex align-items-center justify-content-center gap-4'>
+                                    <div className='d-lg-flex d-none align-items-center justify-content-center gap-4'>
                                         <p><small><span className='fw-bold'>Rating: </span> {r.rating}</small></p>
                                         <p><small><span className='fw-bold'>Date:</span> {r.date}</small></p>
                                     </div>

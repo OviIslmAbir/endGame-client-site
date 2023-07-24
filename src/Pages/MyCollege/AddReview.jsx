@@ -3,9 +3,10 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { FaUser, FaStar, FaCalendar } from 'react-icons/fa';
 import { BiSolidMessage } from 'react-icons/bi';
 import Swal from 'sweetalert2'
+import useTitle from '../../Hook/useTitle';
 
 const AddReview = () => {
-
+    useTitle("Add review")
     const {user} = useContext(AuthContext)
 
     const handleReview = event => {
@@ -23,7 +24,7 @@ const AddReview = () => {
             feedback
         }
 
-        fetch('http://localhost:5000/review',{
+        fetch('https://end-game-server-site.vercel.app/review',{
             method: "POST",
             headers: {
                     'content-type': 'application/json'

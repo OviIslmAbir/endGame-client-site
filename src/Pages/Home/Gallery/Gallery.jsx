@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Gallery = () => {
     const [gallery, setGallery] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/gallery')
+        fetch('https://end-game-server-site.vercel.app/gallery')
         .then(res => res.json())
         .then(data => setGallery(data))
     }, [])
@@ -13,7 +13,7 @@ const Gallery = () => {
             <div className="row">
                 {
                     gallery.map(g => 
-                        <div className='col-lg-4'>
+                        <div className='col-lg-4 col-md-6'>
                             <img src={g.img}  alt=""style={{height:"200px",width:"500px"}} className='img-fluid img-thumbnail mt-3 p-2' />
                         </div>
                     )

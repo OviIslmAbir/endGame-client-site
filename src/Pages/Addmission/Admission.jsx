@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hook/useTitle';
 
 const Admission = () => {
     const admission = useLoaderData()
+    useTitle('Admission')
     return (
     <div className='container mt-4'>
         <h3 className='text-center fw-bold mb-4'>Admission</h3>
-        <div className="row row-cols-1 row-cols-md-3 g-4 mb-3">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-3">
             {
                 admission.map(a => 
                     <div key={a._id} className="col">

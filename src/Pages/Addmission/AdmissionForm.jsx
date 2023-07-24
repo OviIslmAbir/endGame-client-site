@@ -4,7 +4,9 @@ import { FaUser, FaBook, FaEnvelope, FaAddressCard, FaCalendar, FaImages} from '
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2'
+import useTitle from '../../Hook/useTitle';
 const AdmissionForm = () => {
+    useTitle("Admission form")
     const admission = useLoaderData() 
     const {user} = useContext(AuthContext)
     const handleAdmissionDetails = event => {
@@ -30,7 +32,7 @@ const AdmissionForm = () => {
             dateOfBirth,
             photo,
         }
-        fetch('http://localhost:5000/admissionDetails', {
+        fetch('https://end-game-server-site.vercel.app/admissionDetails', {
             method : "POST",
             headers: {
                 'content-type': 'application/json'

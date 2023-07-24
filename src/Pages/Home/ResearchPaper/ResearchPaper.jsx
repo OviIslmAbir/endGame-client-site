@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 const ResearchPaper = () => {
     const [research, setResearch] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/research')
+        fetch('https://end-game-server-site.vercel.app/research')
         .then(res => res.json())
         .then(data => setResearch(data))
     },[])
     return (
         <div className='container'>
             <h3 className='text-center fw-bold mb-4'>Research Paper</h3>
-            <div className="row row-cols-1 row-cols-md-3 g-4 mb-3">
+            <div className="row row-cols-1 row-cols-md-1 row-cols-lg-3 g-4 mb-3">
                 {
                     research.map(r => 
                         <div key={r._id} className="col">
