@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDTTaKHAlsIO7WbP-7cSlKs2cnN_pBnloc",
-  authDomain: "endgame-b9583.firebaseapp.com",
-  projectId: "endgame-b9583",
-  storageBucket: "endgame-b9583.appspot.com",
-  messagingSenderId: "349154415961",
-  appId: "1:349154415961:web:6022f585c5820d341f2848"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 
